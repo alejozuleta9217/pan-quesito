@@ -1,0 +1,237 @@
+/* ============================= */
+/* RESET GLOBAL */
+/* ============================= */
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden; /* 🔥 elimina scroll */
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+}
+
+
+/* ============================= */
+/* CONTENEDOR PRINCIPAL */
+/* ============================= */
+
+.frame-container {
+  width: 100vw;
+  height: 100dvh; /* 🔥 mejor que 100vh en móvil moderno */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+
+  perspective: 1200px; /* para efecto 3D */
+}
+
+
+/* ============================= */
+/* TARJETA CENTRAL */
+/* ============================= */
+
+.content {
+  width: min(90vw, 500px);
+  height: min(80vh, 650px);
+
+  border-radius: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  z-index: 2;
+
+  transition: transform 0.2s ease-out;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.1),
+    inset 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+.content h1 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #333;
+  opacity: 0.9;
+}
+
+
+/* ============================= */
+/* LADOS IZQUIERDO Y DERECHO */
+/* ============================= */
+
+.side {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  z-index: 1;
+}
+
+.side.left {
+  left: 100px;
+}
+
+.side.right {
+  right: 100px;
+}
+
+
+/* ============================= */
+/* IMÁGENES */
+/* ============================= */
+
+.sunflower {
+  width: clamp(140px, 16vw, 180px);
+  height: auto;
+
+  border-radius: 20px;
+  object-fit: cover;
+
+  opacity: 1; /* 👈 cambiar esto */
+  transform-style: preserve-3d;
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.2s ease-out,
+    filter 0.2s ease-out,
+    opacity 0.2s ease-out;
+}
+
+.mensaje-aniversario {
+  max-width: 650px;       /* Más ancho para que no quede tan vertical */
+  margin: 0 auto;         /* Centrado */
+  padding: 40px 30px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.8;       /* Más aire entre líneas */
+  color: #333;
+}
+
+.mensaje-aniversario p {
+  margin-bottom: 20px;    /* Espacio entre párrafos */
+}
+
+
+.mensaje-aniversario {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+
+.mensaje-aniversario .invitacion {
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 19px;
+}
+
+
+/* Fade-in suave */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ============================= */
+/* LLUVIA DE HOJAS */
+/* ============================= */
+
+.rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.rain-leaf {
+  position: absolute;
+  top: -50px;
+
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+/* Animación de caída */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+
+/* ============================= */
+/* RESPONSIVE AJUSTES */
+/* ============================= */
+
+@media (max-width: 900px) {
+
+  .side.left {
+    left: 10px;
+  }
+
+  .side.right {
+    right: 10px;
+  }
+
+  .side {
+    gap: 10px;
+  }
+
+  .sunflower {
+  width: clamp(100px, 14vw, 180px);
+}
+
+@media (min-width: 1200px) {
+  .sunflower {
+    width: 220px;
+  }
+}
+
+  .content {
+    width: 90vw;
+    height: 70vh;
+  }
+}
