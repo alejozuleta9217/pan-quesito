@@ -354,6 +354,8 @@ h2 {
   z-index: 3;
 }
 
+
+
 /* CARTA / FOTO */
 .letter {
   position: absolute;
@@ -456,4 +458,5 @@ h2 {
   background: #fff3f3;
   color: #444;
   position: relative;
+  z-index: 10000; /* 🔥 más alto que el sobre */
 }
