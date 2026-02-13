@@ -11,7 +11,8 @@ body,
 }
 
 body {
-  overflow: hidden; /* 🔥 elimina scroll */
+  overflow-x: hidden;
+  overflow-y: auto;
   font-family: sans-serif;
   background: linear-gradient(135deg, #fdfbfb, #ebedee);
 }
@@ -41,8 +42,9 @@ body {
 /* ============================= */
 
 .content {
-  width: min(90vw, 500px);
-  height: min(80vh, 650px);
+  width: min(90vw, 650px);
+  min-height: auto;
+  padding: 20px;
 
   border-radius: 30px;
 
@@ -223,6 +225,7 @@ body {
   .sunflower {
   width: clamp(100px, 14vw, 180px);
 }
+}
 
 @media (min-width: 1200px) {
   .sunflower {
@@ -234,4 +237,28 @@ body {
     width: 90vw;
     height: 70vh;
   }
+}
+
+@media (max-width: 768px) {
+
+  .side {
+    display: none;
+  }
+
+  .frame-container {
+    align-items: flex-start;
+    padding: 40px 0;
+  }
+
+  .content {
+    width: 92vw;
+    border-radius: 20px;
+  }
+
+  .mensaje-aniversario {
+    font-size: 17px;
+    line-height: 1.7;
+    padding: 30px 20px;
+  }
+
 }
